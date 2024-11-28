@@ -19,5 +19,5 @@ def get_date(date: str) -> datetime.date:
 
     date_list = date.split("T")
     date_str = date_list[0]
-    date_object = datetime.strptime(date_str, "%Y-%m-%d").date()
-    return date_object
+    date_object = datetime.strptime(date_str, "%Y-%m-%d")
+    return date_object.strftime("%d.%m.%Y")
