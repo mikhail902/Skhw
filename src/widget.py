@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from masks import get_mask_account, get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card: str) -> str:
@@ -18,6 +18,12 @@ def get_date(date: str) -> datetime.date:
     """Функция преобразованияя даты"""
 
     date_list = date.split("T")
-    date_str = date_list[0]
-    date_object = datetime.strptime(date_str, "%Y-%m-%d")
-    return date_object.strftime("%d.%m.%Y")
+    if len(date_list[0]) > 10:
+        original_date = "Неправильно введена дата"
+    elif len(date) == 0:
+        original_date = ""
+    else:
+        date_str = date_list[0]
+        date_object = datetime.strptime(date_str, "%Y-%m-%d")
+        original_date = date_object.strftime("%d.%m.%Y")
+    return original_date

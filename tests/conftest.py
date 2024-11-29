@@ -1,6 +1,6 @@
 import pytest
 
 
-@pytest.fixture
-def numbers():
+@pytest.mark.parametrize
+def card():
     pass
