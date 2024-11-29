@@ -6,3 +6,5 @@ date = input()
 
 print(mask_account_card(card))
 print(get_date(date))
+
+
