@@ -16,12 +16,13 @@ def transaction_descriptions(operations: list) -> iter:
 
 def card_number_generator(start: int, stop: int) -> str:
     """Функция генерации номеров карт"""
-    for i in range(start, stop+1):
+    for i in range(start, stop + 1):
         card_number = i
         formatted_number = "{:016d}".format(card_number)
         print(formatted_number)
 
-print(card_number_generator(1,3))
+
+print(card_number_generator(1, 3))
 """for card_number in card_number_generator(1, 5):
     print(card_number)"""
 

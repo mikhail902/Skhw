@@ -37,6 +37,16 @@
 
          pip install -r requirements.txt
 
+## Тестировка
+
+Проект имеет 100% покрытость тестами.
+в htmlcov вы можете найти html файл о тестировании проекта.
+
+А так же:
+* Генерация отчета тестирования: pytest --cov=src --cov-report=html
+* Добавление через поетри: poetry add --group dev pytest-cov
+* Активация: poetry run putest --cov
+
 ## Кратко
 
     • Клонируйте репозиторий: git clone 
