@@ -25,7 +25,6 @@ def card_number_generator(start: int, stop: int) -> str:
 print(card_number_generator(1, 3))
 """for card_number in card_number_generator(1, 5):
     print(card_number)"""
-
 """operation = [{"code": "USD", 3: 3, "description": 2}, {"description": 1, "code": "USD"}]
 usd_transactions = filter_by_currency(operation, "USD")
 for _ in range(len(operation)):
