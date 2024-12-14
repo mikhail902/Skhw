@@ -1,8 +1,13 @@
 import time
 
+from functools import wraps
+
 
 def log(filename=None) -> any:
+    """Декоратор, который проверяет функцию на время работы, ошибки и правильный ответ """
+
     def wrapper(function):
+        @wraps(function)
         def inner(*args, **kwargs):
             try:
                 time_1 = time.time()
@@ -21,13 +26,13 @@ def log(filename=None) -> any:
                 time_1 = time.time()
                 result = function(*args, **kwargs)
                 time_2 = time.time()
-                time_of_work = time_2 - time_1
+                time_of_work = str(time_2 - time_1) + result
                 if file is not None:
                     with open(filename, "a", encoding="utf-8") as file:
                         file.write(
-                            f"""\nПри выполнении функции произошла ошибка {e}. Результат функции: {result}\n"""
-                        )
-                return "Ошибка"
+                            f"""\nПри выполнении функции произошла ошибка {e}. Результат функции: {time_of_work}\n.
+                             Входные параметры {args, " ", kwargs}""")
+                return result
 
         return inner
 
