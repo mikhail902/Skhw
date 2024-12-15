@@ -1,10 +1,9 @@
 import time
-
 from functools import wraps
 
 
 def log(filename=None) -> any:
-    """Декоратор, который проверяет функцию на время работы, ошибки и правильный ответ """
+    """Декоратор, который проверяет функцию на время работы, ошибки и правильный ответ"""
 
     def wrapper(function):
         @wraps(function)
@@ -31,7 +30,8 @@ def log(filename=None) -> any:
                     with open(filename, "a", encoding="utf-8") as file:
                         file.write(
                             f"""\nПри выполнении функции произошла ошибка {e}. Результат функции: {time_of_work}\n.
-                             Входные параметры {args, " ", kwargs}""")
+                             Входные параметры {args, " ", kwargs}"""
+                        )
                 return result
 
         return inner
