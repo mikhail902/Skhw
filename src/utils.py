@@ -5,7 +5,7 @@ from src.external_api import conversion
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler("C:/Users/Sator/PycharmProjects/PythonProject3/logs/utils_data.log", "a")
+file_handler = logging.FileHandler("C:/Users/Sator/PycharmProjects/PythonProject3/logs/utils_data.logs", "a")
 file_formatter = logging.Formatter("%(asctime)s - %(filename)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
