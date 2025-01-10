@@ -9,6 +9,8 @@ readme = "README.md"
 python = "^3.13"
 requests = "^2.32.3"
 python-dotenv = "^1.0.1"
+pandas = "^2.2.3"
+openpyxl = "^3.1.5"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.1"
