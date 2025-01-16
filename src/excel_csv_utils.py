@@ -6,25 +6,50 @@ PATH_TO_EXCEL = "C:/Users/Sator/PycharmProjects/PythonProject3/data/excel_file.x
 PATH_TO_CSV = "C:/Users/Sator/PycharmProjects/PythonProject3/data/csv_file.csv"
 
 
-def excel_transaction(path_file_excel: str) -> list:
-    """Функция считывания операций из эксель файла"""
-    list_operations_excel = []
-    operations = pd.read_excel(path_file_excel)
-    for index, row in operations.iterrows():
-        if index != "Name":
-            list_operations_excel.append({index: row})
-    return list_operations_excel
+def excel_transaction(file_path: str) -> list:
+    """Функция считывающая строки из эксель файла и превращающая в список словарей из строк файла"""
+    try:
+        df = pd.read_excel(file_path)
+        list_of_dicts = df.to_dict(orient="records")
+        return list_of_dicts
+    except FileNotFoundError:
+        print(f"Ошибка: Файл не найден по пути: {file_path}")
+        return []
+    except Exception as e:
+        print(f"Ошибка при чтении файла: {e}")
+        return []
 
 
-def csv_transaction(path_file_csv: str) -> list:
-    """Функция считывания операций из csv файла"""
-    list_operations_csv = []
-    with open(path_file_csv) as file:
-        reader = csv.reader(file)
-        for row in reader:
-            list_operations_csv.append(row)
-    return list_operations_csv
+if __name__ == "__main__":
+    result = excel_transaction(PATH_TO_EXCEL)
+    if result:
+        for dictionary in result:
+            print(dictionary)
+    else:
+        print("Не удалось прочитать данные из Excel файла.")
 
 
-print(excel_transaction(PATH_TO_EXCEL))
-print(csv_transaction(PATH_TO_CSV))
+def csv_to_list_of_dicts(file_path: str) -> list:
+    """Функция считывающая строки из csv файла и превращающая в список словарей из строк файла"""
+    try:
+        list_of_dicts = []
+        with open(file_path, "r", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                list_of_dicts.append(row)
+        return list_of_dicts
+    except FileNotFoundError:
+        print(f"Ошибка: Файл не найден по пути: {file_path}")
+        return []
+    except Exception as e:
+        print(f"Ошибка при чтении файла: {e}")
+        return []
+
+
+if __name__ == "__main__":
+    result = csv_to_list_of_dicts(PATH_TO_CSV)
+    if result:
+        for dictionary in result:
+            print(dictionary)
+    else:
+        print("Не удалось прочитать данные из CSV файла.")
