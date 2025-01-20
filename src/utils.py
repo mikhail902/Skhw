@@ -3,6 +3,9 @@ import logging
 
 from src.external_api import conversion
 
+PATH_TO_JSON = "C:/Users/Sator/PycharmProjects/PythonProject3/data/operation.json"
+
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 file_handler = logging.FileHandler("C:/Users/Sator/PycharmProjects/PythonProject3/logs/utils_data.logs", "a")
@@ -36,7 +39,3 @@ def sum_transactions(transaction: list) -> float:
     except ValueError as e:
         logging.error(f"Ошибка в функции sum_transactions, {e}")
         return 0
-
-
-file_path = "C:/Users/Sator/PycharmProjects/PythonProject3/data/operation.json"
-print(dict_transactions(file_path))

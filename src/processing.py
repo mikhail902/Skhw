@@ -3,13 +3,14 @@ def filter_by_state(dicts: list, state="EXECUTED") -> list:
 
     new_dicts = []
     for i in dicts:
-        if i["state"] == state:
+        if str(i["state"]).lower() == state.lower():
             new_dicts.append(i)
     return new_dicts
 
 
 def sort_by_date(date_list: list | str, method_of_sort=False) -> list:
     """Функция сортировки по дате"""
+
     if sort_by_date == "":
         sorted_date = []
     else:

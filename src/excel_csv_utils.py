@@ -34,7 +34,7 @@ def csv_to_list_of_dicts(file_path: str) -> list:
     try:
         list_of_dicts = []
         with open(file_path, "r", encoding="utf-8") as file:
-            reader = csv.DictReader(file, delimiter=';')
+            reader = csv.DictReader(file, delimiter=";")
             for row in reader:
                 list_of_dicts.append(row)
         return list_of_dicts

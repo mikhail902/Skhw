@@ -1,7 +1,7 @@
 def filter_by_currency(operations: list, currency="USD") -> iter:
     """Функция превращения списка транзакций в итератор"""
     try:
-        return filter(lambda x: x["code"] == currency, operations)
+        return list(filter(lambda x: x["code"] == currency, operations))
     except StopIteration:
         print(f"Ошибка, слишком много значений запрошено {StopIteration}")
 
